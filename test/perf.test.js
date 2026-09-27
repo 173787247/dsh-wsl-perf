@@ -24,3 +24,20 @@ describe("perf", () => {
     assert.equal(parameters().additionalProperties, false);
   });
 });
+
+// ── uptime and per-process cpu, added after the first release ───────────────
+describe("the richer counters", () => {
+  it("passes uptime and core count through", () => {
+    const v = normalize({ uptimeSec: 90061, logicalProcessors: 32 });
+    assert.equal(v.uptimeSec, 90061);
+    assert.equal(v.logicalProcessors, 32);
+  });
+  it("renders uptime as days and hours", () => {
+    const out = format(normalize({ uptimeSec: 90061 }));
+    assert.ok(out.includes("uptime: 1d 1h"), out);
+  });
+  it("reports per-process cpu seconds", () => {
+    const out = format(normalize({ processes: [{ name: "x", pid: 1, memMB: 2, cpuSec: 12.5 }] }));
+    assert.ok(out.includes("cpu 12.5s"), out);
+  });
+});
