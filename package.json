@@ -1,0 +1,42 @@
+{
+  "name": "dsh-wsl-perf",
+  "version": "0.1.0",
+  "description": "Windows host performance counters from WSL: CPU, memory, disk and top processes.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/173787247/dsh-wsl-perf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/173787247/dsh-wsl-perf/issues"
+  },
+  "homepage": "https://github.com/173787247/dsh-wsl-perf#readme",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "wsl",
+    "windows",
+    "perf"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
