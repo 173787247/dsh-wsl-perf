@@ -17,7 +17,7 @@ describe("perf", () => {
   it("reports memory as used over total", () => {
     const out = format(normalize({ cpuPercent: 5, memTotalMB: 1000, memFreeMB: 250 }));
     assert.match(out, /cpu=5%/);
-    assert.match(out, /mem=750\/1000MB/);
+    assert.ok(out.includes("memory: 750/1000MB"), out);
   });
   it("declares top as a bounded parameter", () => {
     assert.equal(parameters().properties.top.type, "number");
